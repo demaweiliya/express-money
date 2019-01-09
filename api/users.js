@@ -7,7 +7,7 @@ const User = require("../models/User")
 const gravatar = require('gravatar')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
-
+//haha
 router.get('/test',(req,res) => {
     res.json({'msg':'login successed!!!'});
 })
