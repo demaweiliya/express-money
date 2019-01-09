@@ -8,6 +8,7 @@ const gravatar = require('gravatar')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
 //haha
+//api/users/test
 router.get('/test',(req,res) => {
     res.json({'msg':'login successed!!!'});
 })
@@ -18,6 +19,7 @@ router.post('/register',(req,res)=>{
         if(user){
             return res.status(400).json({email:"邮箱已被注册!"})
         }else{
+            //给一个默认的头像
             const avatar = gravatar.url(req.body.email, {s: '200', r: 'pg', d: 'mm'});
 
             const newUser = new User({
@@ -57,9 +59,14 @@ router.post('/register',(req,res)=>{
      const email = req.body.email;
      const password = req.body.password;
 
+console.log('email',email);
 
-     User.findOne({email}).then((user)=>{
+     User.findOne({email:email}).then((user)=>{
+        console.log(user);
+        
+         
         if(!user){
+            
             return res.status(404).json({email:"用户不存在!"});
         }
 
