@@ -59,24 +59,18 @@ router.post('/register',(req,res)=>{
      const email = req.body.email;
      const password = req.body.password;
 
-console.log('email',email);
-
      User.findOne({email:email}).then((user)=>{
-        console.log(user);
-        
-         
+    
         if(!user){
-            
             return res.status(404).json({email:"用户不存在!"});
         }
-
         //密码匹配
         bcrypt.compare(password, user.password).then(isMatch => {
             if(isMatch){
                 //规则 加密名 过期时间 回调
                 const rule = {id:user.id,name:user.name}
 
-                jwt.sign(rule,"secret",{expiresIn:3600},(err,token)=>{
+                jwt.sign(rule,"secret",{expiresIn:36000},(err,token)=>{
                     if(err) throw err;
                     res.json({
                         success:true,
