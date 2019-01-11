@@ -6,9 +6,9 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "client-install":"npm install --prefix cash-manage3",
-    "client":"npm start --prefix cash-manage3",
-    "dev":"concurrently \"npm run server\" \"npm run client\""
+    "client-install": "npm install --prefix cash-manage3",
+    "client": "npm start --prefix cash-manage3",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
